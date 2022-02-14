@@ -1,6 +1,8 @@
 package zapwrap
 
 import (
+	"time"
+
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -15,7 +17,7 @@ func init() {
 	encoderConfig := zap.NewProductionEncoderConfig()
 	// configure zap logger encoding
 	// configure timestamp format
-	zapcore.TimeEncoderOfLayout("ISO8601")
+	encoderConfig.EncodeTime = zapcore.TimeEncoderOfLayout(time.RFC3339)
 	// hide stack trace information
 	encoderConfig.StacktraceKey = ""
 	config.EncoderConfig = encoderConfig
@@ -42,12 +44,7 @@ func Error(message string, fields ...zap.Field) {
 	zl.Error(message, fields...)
 }
 
-// wrap zap logger Fatal function
+// wrap zap logger Fatal function; will trigger an os.exit(1) call
 func Fatal(message string, fields ...zap.Field) {
 	zl.Fatal(message, fields...)
-}
-
-// wrap zap logger Panic function
-func Panic(message string, fields ...zap.Field) {
-	zl.Panic(message, fields...)
 }
