@@ -1,8 +1,6 @@
-# Zap Wrap || Golang Zap Logger Package
+# Zap Wrap (Golang Zap Logger Package)
 
 Zap Wrap or, Golang Zap Logger package, is a pre-configured Zap Logger package that can be imported into Go applications.
-
-The package name is ```gzl``` to make referencing throughout code a little easier.
 
 ## Example
 
@@ -10,10 +8,10 @@ The package name is ```gzl``` to make referencing throughout code a little easie
 package main
 
 import (
-    "github.com/danielwray/zapwrap/gzl"
+    "github.com/danielwray/zapwrap"
 )
 
 func main() {
-    gzl.Info("Some useful message")
+    zapwrap.Info("Some useful message")
 }
 ```

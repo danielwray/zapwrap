@@ -1,4 +1,4 @@
-package gzl
+package zapwrap
 
 import (
 	"go.uber.org/zap"
